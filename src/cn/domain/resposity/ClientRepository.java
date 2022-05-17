@@ -1,6 +1,7 @@
 package cn.domain.resposity;
 
 import cn.domain.model.Client;
+import cn.domain.model.Project;
 
 import java.util.List;
 
@@ -40,5 +41,10 @@ public interface ClientRepository {
      * 根据 clientType 查询客户
      */
     List<Client> getClientByType(String clientType);
+
+    /**
+     * 根据 introduction 查询客户
+     */
+    List<Client> getClientByIntroduction(String introduction);
 
 }

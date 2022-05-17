@@ -4,14 +4,21 @@ public class Freelancer extends User{
     private Integer id;
     private String name;
     private String type;
+    private String introduction;
     private String phone;
     private String email;
     private String wechat;
-    private String introduction;
 
+    public Freelancer(String username, String password) {
+        super(username, password);
+    }
 
-    public Freelancer(String userName, String password) {
-        super(userName, password);
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public Freelancer() {
@@ -40,7 +47,6 @@ public class Freelancer extends User{
     public void setType(String type) {
         this.type = type;
     }
-
 
     public String getIntroduction() {
         return introduction;

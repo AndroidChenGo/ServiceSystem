@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
 	function checkForm(){
-		var name=document.getElementById("name").value;
 		var clientId=document.getElementById("clientId").value;
-		var email=document.getElementById("email").value;
-		var wechat=document.getElementById("wechat").value;
+		var name=document.getElementById("name").value;
 
-		if(name=="" || name==null || !isChinese(name)){
-			document.getElementById("error").innerHTML="项目名不能为空或含非中文字符！";
+		if(name=="" || name==null){
+			document.getElementById("error").innerHTML="请填写项目名称！";
+			return false;
+		} else if(!isChinese(name)){
+			// var i = /[1-9][0-9]{4,}/;
+			document.getElementById("error").innerHTML="请输入中文名称！";
 			return false;
 		}
-		if(clientId=="" || clientId==null || clientId == 0){
-			 	document.getElementById("error").innerHTML="请填写客户编号！";
-			 	return false;
-		} else if(!isNumber(clientId)){
+		if(clientId=="" || clientId==null){
+			document.getElementById("error").innerHTML="请填写客户编号！";
+			return false;
+		} else if(!isNumber(id)){
 			// var i = /[1-9][0-9]{4,}/;
 			document.getElementById("error").innerHTML="客户编号必须为数字！";
 			return false;
@@ -78,16 +80,15 @@
 				<input type="hidden" id="id" name="id" value="${project.id }"/>
 					<table align="center">
 						<tr>
-							<td><font color="red">*</font>名称：</td>
+							<td><font color="red">*</font>项目名称：</td>
 							<td><input type="text" id="name"  name="name" value="${project.name }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red"> </font>类型：</td>
+							<td><font color="red"> </font>项目类型：</td>
 							<td><input type="text" id="type"  name="type" value="${project.type }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
-
 						<tr>
-							<td><font color="red"> </font>状态：</td>
+							<td><font color="red"> </font>项目状态：</td>
 							<td><input type="text" id="state"  name="state" value="${project.state }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
@@ -95,18 +96,14 @@
 							<td><input type="text" id="clientId"  name="clientId" value="${project.clientId }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red"> </font>内容：</td>
+							<td><font color="red"> </font>项目内容：</td>
 							<td><input type="text" id="content"  name="content" value="${project.content }"  style="margin-top:5px;height:80px;" /></td>
 						</tr>
-
 					</table>
 					<div align="center">
 						<input type="submit" class="btn btn-primary" value="保存"/>
 						&nbsp;<button class="btn btn-primary" type="button" onclick="javascript:window.location='project?action=list'">返回</button>
 					</div>
-<%--					<div align="center">--%>
-<%--						<font id="error" color="red">${error }</font>--%>
-<%--					</div>--%>
 			</div>
 		</form>
 </div>

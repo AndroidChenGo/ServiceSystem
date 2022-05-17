@@ -4,23 +4,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
 	function checkForm(){
-		var name=document.getElementById("name").value;
 		var freelancerId=document.getElementById("freelancerId").value;
-		var email=document.getElementById("email").value;
-		var wechat=document.getElementById("wechat").value;
+		var name=document.getElementById("name").value;
+		var start=document.getElementById("start").value;
+		var end=document.getElementById("end").value;
 
-		if("" == name || name ==null || !isChinese(name)){
-			document.getElementById("error").innerHTML="时间表名不能为空或含非中文字符！";
+		if(name=="" || name==null){
+			document.getElementById("error").innerHTML="请填写时间表名称！";
+			return false;
+		} else if(!isChinese(name)){
+			// var i = /[1-9][0-9]{4,}/;
+			document.getElementById("error").innerHTML="请输入中文名称！";
 			return false;
 		}
-		if("" == freelancerId || freelancerId==null){
-			 	document.getElementById("error").innerHTML="请填写自由职业者编号！";
-			 	return false;
+		if(start=="" || start==null || end=="" || end==null){
+			document.getElementById("error").innerHTML="请填写时间表时间！";
+			return false;
+		}
+		if(freelancerId=="" || freelancerId==null){
+			document.getElementById("error").innerHTML="自由职业者编号不能为空！";
+			return false;
 		} else if(!isNumber(freelancerId)){
 			// var i = /[1-9][0-9]{4,}/;
 			document.getElementById("error").innerHTML="自由职业者编号必须为数字！";
 			return false;
 		}
+
 		return true;
 	}
 	function isChinese(str){
@@ -53,6 +62,7 @@
 
 	$(document).ready(function(){
 		$("ul li:eq(4)").addClass("active");
+
 	});
 </script>
 <div class="data_list">
@@ -74,20 +84,23 @@
 				<input type="hidden" id="id" name="id" value="${timetable.id }"/>
 					<table align="center">
 						<tr>
-							<td><font color="red">*</font>名称：</td>
+							<td><font color="red">*</font>日程名称：</td>
 							<td><input type="text" id="name"  name="name" value="${timetable.name }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red">*</font>时间：</td>
-<%--							<label for="start_time"></label><input type="date" id="start_time" value="${timetable.name }"/>--%>
-							<td><input type="date" id="time"  name="time" value="${timetable.time }"  style="margin-top:5px;height:30px;" /></td>
+							<td><font color="red">*</font>开始时间：</td>
+							<td><input type="datetime-local" id="start"  name="start" value="${start }"  style="margin-top:5px;height:30px;" /></td>
+						</tr>
+						<tr>
+							<td><font color="red">*</font>结束时间：</td>
+							<td><input type="datetime-local" id="end"  name="end" value="${end }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
 							<td><font color="red">*</font>自由职业者编号：</td>
 							<td><input type="text" id="freelancerId"  name="freelancerId" value="${timetable.freelancerId }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red"> </font>内容：</td>
+							<td><font color="red"> </font>工作内容：</td>
 							<td><input type="text" id="content"  name="content" value="${timetable.content }"  style="margin-top:5px;height:80px;" /></td>
 						</tr>
 

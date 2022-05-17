@@ -72,11 +72,11 @@ window.onload = function(){
 			<table class="table table-striped table-bordered table-hover datatable">
 				<thead>
 					<tr>
-					<th>编号</th>
-					<th>名称</th>
-					<th>类型</th>
-					<th>状态</th>
-					<th>内容</th>
+					<th>项目编号</th>
+					<th>项目名称</th>
+					<th>项目类型</th>
+					<th>项目状态</th>
+					<th>项目内容</th>
 					<th>客户编号</th>
 					<th>操作</th>
 				</tr>

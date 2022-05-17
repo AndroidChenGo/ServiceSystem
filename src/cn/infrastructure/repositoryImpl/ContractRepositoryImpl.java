@@ -23,7 +23,7 @@ public class ContractRepositoryImpl extends BaseRespository implements ContractR
         }else{
             String sql = "update contract set `name`=?,`content`=?,`state`=?,`clientId`=?,`freelancerId`=?,`projectId`=? where id = ?";
             if(-1 != update(sql,contract.getName(),contract.getContent(),
-                    contract.getState(),contract.getClientId(),contract.getFreelancerId(),contract.getProjectId())){
+                    contract.getState(),contract.getClientId(),contract.getFreelancerId(),contract.getProjectId(),contract.getId())){
                 return true;
             }else return false;
         }

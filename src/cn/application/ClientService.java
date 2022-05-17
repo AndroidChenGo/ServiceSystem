@@ -17,6 +17,9 @@ public class ClientService {
     public Client queryClientById(Integer id) {
         return clientRepository.getClientById(id);
     }
+    public List<Client> queryClientByIntroduction(String introduction) {
+        return clientRepository.getClientByIntroduction(introduction);
+    }
     public Client queryClientByUsername(String username) {
         return clientRepository.getClientByUsername(username);
     }

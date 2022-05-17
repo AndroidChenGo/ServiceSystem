@@ -78,6 +78,8 @@ public class ContractServlet extends HttpServlet {
             }else if("projectId".equals(searchType)) {
                 contracts = contractService.queryContractByProjectId(Integer.parseInt(searchText));
             }
+            request.setAttribute("searchText", searchText);
+            request.setAttribute("searchType", searchType);
             //2 把全部合同保存到Request域中
             request.setAttribute("contractList", contracts);
             //3、请求转发到页面

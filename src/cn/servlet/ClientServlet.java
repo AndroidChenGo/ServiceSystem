@@ -71,7 +71,11 @@ public class ClientServlet extends HttpServlet {
                 clients.add(clientService.queryClientById(Integer.parseInt(searchText)));
             } else if("type".equals(searchType)) {
                 clients = clientService.queryClientByType(searchText);
+            } else if("introduction".equals(searchType)) {
+                clients = clientService.queryClientByIntroduction(searchText);
             }
+            request.setAttribute("searchText", searchText);
+            request.setAttribute("searchType", searchType);
             //2 把全部客户保存到Request域中
             request.setAttribute("userList", clients);
             //3、请求转发到client.jsp页面

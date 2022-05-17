@@ -11,14 +11,17 @@
 		var name=document.getElementById("name").value;
 
 		if(id=="" || id==null){
-			 	document.getElementById("error").innerHTML="请填写工号！";
+			 	document.getElementById("error").innerHTML="请填写客户编号！";
 			 	return false;
 		} else if(!isNumber(id)){
 			// var i = /[1-9][0-9]{4,}/;
-			document.getElementById("error").innerHTML="工号必须为数字！";
+			document.getElementById("error").innerHTML="客户编号必须为数字！";
 			return false;
 		}
-		if(name!=="" && name!=null && !isChinese(name)){
+		if(name=="" || name==null){
+			document.getElementById("error").innerHTML="请填写客户姓名！";
+			return false;
+		}else if(!isChinese(name)){
 			document.getElementById("error").innerHTML="请输入中文名！";
 			return false;
 		}
@@ -97,35 +100,35 @@
 				<input type="hidden" id="username" name="username" value="${user.username }"/>
 					<table align="center">
 						<tr>
-							<td><font color="red">*</font>工号：</td>
+							<td><font color="red">*</font>客户编号：</td>
 							<td><input type="text" id="id"  name="id" value="${user.id }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 
 						<tr>
-							<td><font color="red"></font>姓名：</td>
+							<td><font color="red">*</font>客户姓名：</td>
 							<td><input type="text" id="name"  name="name" value="${user.name }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
 <%--							<td><font color="red">*</font>寝室：</td>--%>
-							<td><font color="red"> </font>类型：</td>
+							<td><font color="red"> </font>客户类型：</td>
 							<td><input type="text" id="type"  name="type" value="${user.type }"  style="margin-top:5px;height:30px;" /></td>
 <%--					<td><input type="text" id="dormName"  name="dormName" value="${student.dormName }"  style="margin-top:5px;height:30px;" /></td>--%>
 						</tr>
 
 						<tr>
-							<td><font color="red">*</font>电话：</td>
+							<td><font color="red">*</font>电话号码：</td>
 							<td><input type="text" id="phone"  name="phone" value="${user.phone }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red">*</font>邮箱：</td>
+							<td><font color="red">*</font>邮箱号码：</td>
 							<td><input type="text" id="email"  name="email" value="${user.email }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red">*</font>微信：</td>
+							<td><font color="red">*</font>微信号码：</td>
 							<td><input type="text" id="wechat"  name="wechat" value="${user.wechat }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red"></font>介绍：</td>
+							<td><font color="red"></font>客户介绍：</td>
 							<td><input type="text" id="introduction"  name="introduction" value="${user.introduction }"  style="margin-top:5px;height:80px;" /></td>
 						</tr>
 

@@ -56,13 +56,14 @@ window.onload = function(){
 					<select id="searchType" name="searchType" style="width: 80px;">
                         <option value="name">名称</option>
                         <option value="id" ${searchType eq "id"?'selected':'' }>编号</option>
-<%--                        <option value="type" ${searchType eq "type"?'selected':'' }>类型</option>--%>
+                        <option value="time" ${searchType eq "time"?'selected':'' }>时间</option>
 <%--						<option value="state" ${searchType eq "state"?'selected':'' }>状态</option>--%>
 						<option value="content" ${searchType eq "content"?'selected':'' }>内容</option>
 						<option value="freelancerId" ${searchType eq "freelancerId"?'selected':'' }>自由职业者编号</option>
 					</select>
-					&nbsp;<input id="searchText" name="searchText" type="text"  style="width:120px;height: 30px;" class="input-medium search-query" value="${searchText }">
-					&nbsp;<button type="submit" class="btn btn-info" onkeydown="if(event.keyCode==13) myForm.submit()">搜索</button>
+					<input id="searchTime" name="searchTime" type="datetime-local"  style="width:120px;height: 30px;" class="input-medium search-query" value="${searchTime }">
+					<input id="searchText" name="searchText" type="text"  style="width:120px;height: 30px;" class="input-medium search-query" value="${searchText }">
+					<button type="submit" class="btn btn-info" onkeydown="if(event.keyCode==13) myForm.submit()">搜索</button>
 				</span>
 			<div align="center">
 				<font id="error" color="red">${error }</font>
@@ -72,22 +73,22 @@ window.onload = function(){
 			<table class="table table-striped table-bordered table-hover datatable">
 				<thead>
 					<tr>
-					<th>编号</th>
-					<th>名称</th>
-<%--					<th>类型</th>--%>
-<%--					<th>状态</th>--%>
-					<th>内容</th>
+					<th>时间表编号</th>
+					<th>时间表名称</th>
+					<th>开始时间</th>
+					<th>结束时间</th>
+					<th>工作内容</th>
 					<th>自由职业者编号</th>
 					<th>操作</th>
 				</tr>
 				</thead>
 				<tbody>
-				<c:forEach  varStatus="j" var="timetable" items="${projectList }">
+				<c:forEach  varStatus="j" var="timetable" items="${timetableList }">
 					<tr>
 						<td>${timetable.id }</td>
 						<td>${timetable.name }</td>
-<%--						<td>${timetable.type }</td>--%>
-<%--						<td>${timetable.state }</td>--%>
+						<td>${timetable.startTime }</td>
+						<td>${timetable.endTime }</td>
 						<td>${timetable.content }</td>
 						<td>${timetable.freelancerId }</td>
 						<td><button class="btn btn-mini btn-info" type="button" onclick="javascript:window.location='timetable?action=preSave&timetableId=${timetable.id }'">修改</button>&nbsp;
