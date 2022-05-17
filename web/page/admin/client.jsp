@@ -33,17 +33,6 @@ window.onload = function(){
 			window.location="client?action=delete&userId="+clientId;
 		}
 	}
-
-	function checkForm(){
-		var searchType=document.getElementById("searchType").value;
-		var userToSelect=document.getElementById("userToSelect").value;
-		// if(userToSelect==null && userToSelect==""){
-		// 	confirm("请选择查询人员类型！");
-		// 	document.getElementById("error").innerHTML = "请选择查询人员类型！";
-		// 	return false;
-		// }
-		return true;
-	}
 </script>
 <style type="text/css">
 	.span6 {
@@ -60,31 +49,24 @@ window.onload = function(){
 		<div class="data_list_title">
 			客户管理
 		</div>
-<%--	style="padding-bottom: 0px"--%>
-<%--		<form name="myForm" class="form-search" method="post" action="student?action=search" onsubmit="return checkForm()">--%>
 	<form name="myForm" class="form-search" method="post" action="client?action=search" style="padding-bottom: 0px">
 	<button class="btn btn-success" type="button" style="margin-right: 50px;" onclick="javascript:window.location='client?action=preSave'">添加</button>
 				<span class="data_search">
-<%--					<select id="userToSelect" name="userToSelect" style="width: 110px;">--%>
-<%--                        <option value="client">客户</option>--%>
-<%--&lt;%&ndash;						<option value="">人员类型</option>&ndash;%&gt;--%>
-<%--&lt;%&ndash;						<option value="client" ${userToSelect eq "client"?'selected':'' }>客户</option>&ndash;%&gt;--%>
-<%--                        <option value="freelancer" ${userToSelect eq "freelancer"?'selected':'' }>自由职业者</option>--%>
-<%--&lt;%&ndash;                        <c:forEach var="userType" items="${userTypeList }">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            <option value="${dormBuild.dormBuildId }" ${buildToSelect==dormBuild.dormBuildId?'selected':'' }>${dormBuild.dormBuildName }栋</option>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                        </c:forEach>&ndash;%&gt;--%>
-<%--					</select>--%>
 					<select id="searchType" name="searchType" style="width: 80px;">
                         <option value="name">姓名</option>
                         <option value="id" ${searchType eq "id"?'selected':'' }>工号</option>
-                        <option value="type" ${searchType eq "type"?'selected':'' }>类型</option>
-<%--						<option value="sex" ${searchType eq "sex"?'selected':'' }>性别</option>--%>
-<%--                        <option value="department" ${searchType eq "department"?'selected':'' }>学院</option>--%>
+						<option value="type" ${searchType eq "type"?'selected':'' }>类型</option>
+                        <option value="introduction" ${searchType eq "introduction"?'selected':'' }>介绍</option>
 					</select>
-					&nbsp;<input id="searchText" name="searchText" type="text"  style="width:120px;height: 30px;" class="input-medium search-query" value="${searchText }">
-					&nbsp;<button type="submit" class="btn btn-info" onkeydown="if(event.keyCode==13) myForm.submit()">搜索</button>
-<%--					<button type="submit" class="btn btn-info">搜索</button>--%>
-<%--					<button type="submit" class="btn btn-info" onkeydown="if(event.keyCode==13) return checkform()">搜索</button>--%>
+<%--					<select id="clientType" name="clientType" style="width: 80px;">--%>
+<%--                        <option value="">类型</option>--%>
+<%--                        <option value="初级" ${clientType eq "初级"?'selected':'' }>初级</option>--%>
+<%--                        <option value="中级" ${clientType eq "中级"?'selected':'' }>中级</option>--%>
+<%--						<option value="高级" ${clientType eq "高级"?'selected':'' }>高级</option>--%>
+<%--                        <option value="特级" ${clientType eq "特级"?'selected':'' }>特级</option>--%>
+<%--					</select>--%>
+					<input id="searchText" name="searchText" type="text"  style="width:120px;height: 30px;" class="input-medium search-query" value="${searchText }">
+					<button type="submit" class="btn btn-info" onkeydown="if(event.keyCode==13) myForm.submit()">搜索</button>
 				</span>
 			<div align="center">
 				<font id="error" color="red">${error }</font>

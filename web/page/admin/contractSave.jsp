@@ -83,11 +83,11 @@
 				<input type="hidden" id="id" name="id" value="${contract.id }"/>
 					<table align="center">
 						<tr>
-							<td><font color="red">*</font>名称：</td>
+							<td><font color="red">*</font>合同名称：</td>
 							<td><input type="text" id="name"  name="name" value="${contract.name }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red">*</font>状态：</td>
+							<td><font color="red"> </font>合同状态：</td>
 							<td><input type="text" id="state"  name="state" value="${contract.state }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
@@ -103,7 +103,7 @@
 							<td><input type="text" id="freelancerId"  name="freelancerId" value="${contract.freelancerId }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red"></font>内容：</td>
+							<td><font color="red"></font>合同内容：</td>
 							<td><input type="text" id="content"  name="content" value="${contract.content }"  style="margin-top:5px;height:80px;" /></td>
 						</tr>
 

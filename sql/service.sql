@@ -72,6 +72,7 @@ CREATE TABLE `timetable`
     `freelancerId`  INT COMMENT NOT NULL '自由职业者id',
     `name`          VARCHAR(20) COMMENT '时间表名称',
     `content`       VARCHAR(200) COMMENT '工作内容',
-    `time`    DATETIME COMMENT '工作开始时间',
+    `startTime`    DATETIME COMMENT '工作开始时间',
+    `endTime`    DATETIME COMMENT '工作结束时间',
     PRIMARY KEY (`id`)
 );

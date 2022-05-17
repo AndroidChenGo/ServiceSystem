@@ -33,17 +33,6 @@ window.onload = function(){
 			window.location="contract?action=delete&contractId="+contractId;
 		}
 	}
-
-	function checkForm(){
-		var searchType=document.getElementById("searchType").value;
-		var userToSelect=document.getElementById("userToSelect").value;
-		// if(userToSelect==null && userToSelect==""){
-		// 	confirm("请选择查询人员类型！");
-		// 	document.getElementById("error").innerHTML = "请选择查询人员类型！";
-		// 	return false;
-		// }
-		return true;
-	}
 </script>
 <style type="text/css">
 	.span6 {
@@ -67,11 +56,9 @@ window.onload = function(){
                         <option value="name">名称</option>
                         <option value="id" ${searchType eq "id"?'selected':'' }>合同编号</option>
                         <option value="state" ${searchType eq "state"?'selected':'' }>状态</option>
-						<option value="clientId" ${searchType eq "id"?'selected':'' }>客户编号</option>
-						<option value="freelancerID" ${searchType eq "freelancerID"?'selected':'' }>自由职业者编号</option>
-						<option value="projectID" ${searchType eq "projectID"?'selected':'' }>项目编号</option>
-<%--						<option value="sex" ${searchType eq "sex"?'selected':'' }>性别</option>--%>
-<%--                        <option value="department" ${searchType eq "department"?'selected':'' }>学院</option>--%>
+						<option value="clientId" ${searchType eq "clientId"?'selected':'' }>客户编号</option>
+						<option value="projectId" ${searchType eq "projectId"?'selected':'' }>项目编号</option>
+						<option value="freelancerId" ${searchType eq "freelancerId"?'selected':'' }>自由职业者编号</option>
 					</select>
 					&nbsp;<input id="searchText" name="searchText" type="text"  style="width:120px;height: 30px;" class="input-medium search-query" value="${searchText }">
 					&nbsp;<button type="submit" class="btn btn-info" onkeydown="if(event.keyCode==13) myForm.submit()">搜索</button>
@@ -87,12 +74,12 @@ window.onload = function(){
 <%--					<th>用户名</th>--%>
 <%--					<th>密码</th>--%>
 					<th>合同编号</th>
-					<th>名称</th>
-					<th>状态</th>
-					<th>内容</th>
+					<th>合同名称</th>
+					<th>合同状态</th>
 					<th>客户编号</th>
-					<th>自由职业者编号</th>
 					<th>项目编号</th>
+					<th>自由职业者编号</th>
+					<th>合同内容</th>
 					<th>操作</th>
 				</tr>
 				</thead>
@@ -105,21 +92,15 @@ window.onload = function(){
 						<td>${contract.id }</td>
 						<td>${contract.name }</td>
 						<td>${contract.state }</td>
-						<td>${contract.content }</td>
 						<td>${contract.clientId }</td>
-						<td>${contract.freelancerId }</td>
 						<td>${contract.projectId }</td>
-						<td><button class="btn btn-mini btn-info" type="button" onclick="javascript:window.location='contract?action=preSave&userId=${contract.id }'">修改</button>&nbsp;
+						<td>${contract.freelancerId }</td>
+						<td>${contract.content }</td>
+						<td><button class="btn btn-mini btn-info" type="button" onclick="javascript:window.location='contract?action=preSave&contractId=${contract.id }'">修改</button>&nbsp;
 							<button class="btn btn-mini btn-danger" type="button" onclick="contractDelete(${contract.id })">删除</button></td>
 					</tr>
 				</c:forEach>
 				</tbody>
 			</table>
 		</div>
-<%--		<div align="center"><font color="red">${error }</font></div>--%>
-<%--		 <div class="pagination pagination-centered">--%>
-<%--			<ul>--%>
-<%--				${pageCode }--%>
-<%--			</ul>--%>
-<%--		</div>--%>
 </div>

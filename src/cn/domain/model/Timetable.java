@@ -7,7 +7,8 @@ public class Timetable {
     private String name;
     private String content;
     private Integer freelancerId;
-    private Timestamp time;
+    private Timestamp startTime;
+    private Timestamp endTime;
 
     public Timetable() {
     }
@@ -36,19 +37,27 @@ public class Timetable {
         this.content = content;
     }
 
-    public Timestamp getTime() {
-        return time;
-    }
-
-    public void setTime(Timestamp time) {
-        this.time = time;
-    }
-
     public Integer getFreelancerId() {
         return freelancerId;
     }
 
     public void setFreelancerId(Integer freelancerId) {
         this.freelancerId = freelancerId;
+    }
+
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
+    }
+
+    public Timestamp getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
     }
 }

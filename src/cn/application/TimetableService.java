@@ -39,7 +39,7 @@ public class TimetableService {
         }
         return timetableRepository.saveTimetable(timetable);
     }
-    public void deleteProjectById(Integer id) {
+    public void deleteTimetableById(Integer id) {
         timetableRepository.removeTimetableById(id);
     }
 }

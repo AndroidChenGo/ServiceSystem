@@ -75,6 +75,8 @@ public class ProjectServlet extends HttpServlet {
             }else if("clientId".equals(searchType)) {
                 projects = projectService.queryProjectByClientId(Integer.parseInt(searchText));
             }
+            request.setAttribute("searchText", searchText);
+            request.setAttribute("searchType", searchType);
             //2 把全部项目保存到Request域中
             request.setAttribute("projectList", projects);
             //3、请求转发到project.jsp页面

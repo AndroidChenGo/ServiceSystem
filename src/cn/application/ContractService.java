@@ -44,7 +44,7 @@ public class ContractService {
         if(clientRepository.getClientById(contract.getClientId()) == null){
             return false;
         }
-        if(!WebUtils.isIntEmpty(contract.getProjectId()) && clientRepository.getClientById(contract.getProjectId()) == null)
+        if(!WebUtils.isIntEmpty(contract.getProjectId()) && projectRepository.getProjectById(contract.getProjectId()) == null)
             return false;
         if(!WebUtils.isIntEmpty(contract.getFreelancerId()) && freelancerRepository.getFreelancerById(contract.getFreelancerId()) == null)
             return false;

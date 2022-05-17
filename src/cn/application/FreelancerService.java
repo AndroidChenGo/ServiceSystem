@@ -1,5 +1,6 @@
 package cn.application;
 
+import cn.domain.model.Client;
 import cn.domain.model.Freelancer;
 import cn.domain.resposity.FreelancerRepository;
 import cn.infrastructure.repositoryImpl.FreelancerRepositoryImpl;
@@ -25,6 +26,9 @@ public class FreelancerService {
     }
     public List<Freelancer> queryFreelancerByName(String name) {
         return freelancerRepository.getFreelancerByName(name);
+    }
+    public List<Freelancer> queryFreelancerByIntroduction(String introduction) {
+        return freelancerRepository.getFreelancerByIntroduction(introduction);
     }
     public boolean saveFreelancer(Freelancer freelancer) {
         Freelancer c = queryFreelancerById(freelancer.getId());
