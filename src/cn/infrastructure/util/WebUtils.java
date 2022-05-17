@@ -34,11 +34,20 @@ public class WebUtils {
         String name = request.getParameter("name");
         String freelancerId = request.getParameter("freelancerId");
         String content = request.getParameter("content");
-        String time = request.getParameter("time");
-        Timestamp timestamp = StringUtil.changeStringToTimestamp(time);
+        String start = request.getParameter("start");
+        String end = request.getParameter("end");
+        Timestamp startTime = StringUtil.changeStringToTimestamp(start);
+        Timestamp endTime = StringUtil.changeStringToTimestamp(end);
+
         Timetable timetable = new Timetable();
-        timetable.setId(Integer.parseInt(id));
+        if(StringUtil.isNotEmpty(id)){
+            timetable.setId(Integer.parseInt(id));
+        }else{
+            timetable.setId(0);
+        }
         timetable.setName(name);
+        timetable.setStartTime(startTime);
+        timetable.setEndTime(endTime);
         timetable.setContent(content);
         timetable.setFreelancerId(Integer.parseInt(freelancerId));
         return timetable;

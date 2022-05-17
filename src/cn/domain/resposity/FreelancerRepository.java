@@ -41,4 +41,9 @@ public interface FreelancerRepository {
      */
     Freelancer getFreelancerByUsername(String username);
 
+    /**
+     * 根据 introduction 查询自由职业者
+     */
+    List<Freelancer> getFreelancerByIntroduction(String introduction);
+
 }

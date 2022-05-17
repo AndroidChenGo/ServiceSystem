@@ -1,6 +1,7 @@
 package cn.infrastructure.repositoryImpl;
 
 import cn.domain.model.Client;
+import cn.domain.model.Project;
 import cn.domain.resposity.ClientRepository;
 import cn.infrastructure.util.StringUtil;
 
@@ -60,5 +61,12 @@ public class ClientRepositoryImpl extends BaseRespository implements ClientRepos
     public List<Client> getClientByType(String clientType) {
         String sql = "select `id` , `name` , `type` , `phone` , `email` , `wechat` , `introduction`, `username` from client where type = ?";
         return queryForList(Client.class, sql,clientType);
+    }
+
+    @Override
+    public List<Client> getClientByIntroduction(String introduction) {
+        StringBuilder sql = new StringBuilder("select `id` , `name` , `type` , `phone` , `email` , `wechat` , `introduction`, `username` from client where introduction like '%");
+        sql.append(introduction).append("%'");
+        return queryForList(Client.class, sql.toString());
     }
 }

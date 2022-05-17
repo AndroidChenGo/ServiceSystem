@@ -30,7 +30,7 @@ window.onload = function(){
 };
 	function freelancerDelete(freelancerId) {
 		if(confirm("您确定要删除这个自由职业者吗？")) {
-			window.location="client?action=delete&userId="+freelancerId;
+			window.location="freelancer?action=delete&userId="+freelancerId;
 		}
 	}
 
@@ -67,6 +67,7 @@ window.onload = function(){
                         <option value="name">姓名</option>
                         <option value="id" ${searchType eq "id"?'selected':'' }>工号</option>
                         <option value="type" ${searchType eq "type"?'selected':'' }>类型</option>
+						<option value="introduction" ${searchType eq "introduction"?'selected':'' }>介绍</option>
 					</select>
 					&nbsp;<input id="searchText" name="searchText" type="text"  style="width:120px;height: 30px;" class="input-medium search-query" value="${searchText }">
 					&nbsp;<button type="submit" class="btn btn-info" onkeydown="if(event.keyCode==13) myForm.submit()">搜索</button>

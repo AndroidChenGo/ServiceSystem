@@ -1,5 +1,6 @@
 package cn.infrastructure.repositoryImpl;
 
+import cn.domain.model.Client;
 import cn.domain.model.Freelancer;
 import cn.domain.resposity.FreelancerRepository;
 import cn.infrastructure.util.StringUtil;
@@ -39,7 +40,7 @@ public class FreelancerRepositoryImpl extends BaseRespository implements Freelan
 
     @Override
     public Freelancer getFreelancerById(Integer id) {
-        String sql = "select `id` , `name` , `type` , `phone` , `email` , `wechat` , `introduction` from freelancer where id = ?";
+        String sql = "select `id` , `username`, `name` , `type` , `phone` , `email` , `wechat` , `introduction` from freelancer where id = ?";
         return queryForOne(Freelancer.class, sql,id);
     }
 
@@ -59,6 +60,13 @@ public class FreelancerRepositoryImpl extends BaseRespository implements Freelan
     public Freelancer getFreelancerByUsername(String username) {
         String sql = "select `id` , `name` , `type` , `phone` , `email` , `wechat` , `introduction`, `username` from freelancer where username = ?";
         return queryForOne(Freelancer.class, sql,username);
+    }
+
+    @Override
+    public List<Freelancer> getFreelancerByIntroduction(String introduction) {
+        StringBuilder sql = new StringBuilder("select `id` , `name` , `type` , `phone` , `email` , `wechat` , `introduction`, `username` from freelancer where introduction like '%");
+        sql.append(introduction).append("%'");
+        return queryForList(Freelancer.class, sql.toString());
     }
 
 }

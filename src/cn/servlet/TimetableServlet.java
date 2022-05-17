@@ -47,6 +47,8 @@ public class TimetableServlet extends HttpServlet {
             if(StringUtil.isNotEmpty(id)){
                 Timetable timetable = timetableService.queryTimetableById(Integer.parseInt(id));
                 request.setAttribute("timetable", timetable);
+                request.setAttribute("start",StringUtil.changeTimestampToString(timetable.getStartTime()));
+                request.setAttribute("end",StringUtil.changeTimestampToString(timetable.getEndTime()));
             }
             request.setAttribute("mainPage", "page/admin/timetableSave.jsp");
             request.getRequestDispatcher("mainAdmin.jsp").forward(request, response);
@@ -59,37 +61,36 @@ public class TimetableServlet extends HttpServlet {
                 response.setContentType("application/json;charset=utf-8");
                 request.setAttribute("error", "freelancerId does not exist");
                 request.setAttribute("timetable", timetable);
+                request.setAttribute("start",StringUtil.changeTimestampToString(timetable.getStartTime()));
+                request.setAttribute("end",StringUtil.changeTimestampToString(timetable.getEndTime()));
                 request.setAttribute("mainPage", "page/admin/timetableSave.jsp");
                 request.getRequestDispatcher("mainAdmin.jsp").forward(request, response);
             };
         }else if("search".equals(action)){
             String searchText = request.getParameter("searchText");
             String searchType = request.getParameter("searchType");
+            String searchTime = request.getParameter("searchTime");
             List<Timetable> timetables = new ArrayList<>();
             if("name".equals(searchType)) {
                 timetables = timetableService.queryTimetableByName(searchText);
             } else if("id".equals(searchType)) {
                 timetables.add(timetableService.queryTimetableById(Integer.parseInt(searchText)));
+            }else if("time".equals(searchType)) {
+                timetables = timetableService.queryTimetableByTime(searchTime);
             }else if("content".equals(searchType)) {
                 timetables = timetableService.queryTimetableByContent(searchText);
             }else if("freelancerId".equals(searchType)) {
                 timetables = timetableService.queryTimetableByFreelancerId(Integer.parseInt(searchText));
             }
-            request.setAttribute("timetableList", timetables);
-            request.setAttribute("mainPage", "page/admin/timetable.jsp");
-            request.getRequestDispatcher("mainAdmin.jsp").forward(request, response);
-        }else if("searchTime".equals(action)){
-            String searchTime = request.getParameter("searchTime");
-            if(StringUtil.isNotEmpty(searchTime)){
-                request.getRequestDispatcher("timetable?action=list").forward(request, response);
-            }
-            List<Timetable> timetables = timetableService.queryTimetableByTime(searchTime);
+            request.setAttribute("searchTime", searchTime);
+            request.setAttribute("searchText", searchText);
+            request.setAttribute("searchType", searchType);
             request.setAttribute("timetableList", timetables);
             request.setAttribute("mainPage", "page/admin/timetable.jsp");
             request.getRequestDispatcher("mainAdmin.jsp").forward(request, response);
         }else if("delete".equals(action)){
             int id = WebUtils.parseInt(request.getParameter("timetableId"), 0);
-            timetableService.deleteProjectById(id);
+            timetableService.deleteTimetableById(id);
             request.getRequestDispatcher("timetable?action=list").forward(request, response);
         }
 

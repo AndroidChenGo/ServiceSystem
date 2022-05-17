@@ -8,75 +8,42 @@
 		var phone=document.getElementById("phone").value;
 		var email=document.getElementById("email").value;
 		var wechat=document.getElementById("wechat").value;
-		var name=document.getElementById("name").value;
 
-		if(id=="" || id==null){
-			 	document.getElementById("error").innerHTML="请填写自由职业者编号！";
-			 	return false;
-		} else if(!isNumber(id)){
-			// var i = /[1-9][0-9]{4,}/;
-			document.getElementById("error").innerHTML="自由职业者编号必须为数字！";
-			return false;
-		}
-		if(name=="" || name==null){
-			document.getElementById("error").innerHTML="请填写自由职业者姓名！";
-			return false;
-		}else if(!isChinese(name)){
-			document.getElementById("error").innerHTML="请输入中文名！";
-			return false;
-		}
-		if(phone==="" && email==="" && wechat===""){
-			document.getElementById("error").innerHTML="请至少输入一个联系方式！";
-			return false;
-		}else if(phone!=="" && phone!=null){
-			var p = /^0\d{2,3}-?\d{7,8}$/;
-			if(!isNumber(phone))	{
-				document.getElementById("error").innerHTML="请检查电话是否正确！";
-				return false;
-			}
-		}else if(email!=="" && email!=null){
-			var re = /^([\w\.\-]+)\@(\w+)(\.([\w^\_]+)){1,2}$/;
-			const regEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
-			if(!re.test(email))	{
-				document.getElementById("error").innerHTML="请检查邮箱是否正确！";
-				return false;
-			}
-		}
-
+        if(id=="" || id==null){
+            document.getElementById("error").innerHTML="请填写自由职业者编号！";
+            return false;
+        } else if(!isNumber(id)){
+            // var i = /[1-9][0-9]{4,}/;
+            document.getElementById("error").innerHTML="自由职业者编号必须为数字！";
+            return false;
+        }
+        if(name=="" || name==null){
+            document.getElementById("error").innerHTML="请填写自由职业者姓名！";
+            return false;
+        }else if(!isChinese(name)){
+            document.getElementById("error").innerHTML="请输入中文名！";
+            return false;
+        }
+        if(phone==="" && email==="" && wechat===""){
+            document.getElementById("error").innerHTML="请至少输入一个联系方式！";
+            return false;
+        }else if(phone!=="" && phone!=null){
+            var p = /^0\d{2,3}-?\d{7,8}$/;
+            if(!isNumber(phone))	{
+                document.getElementById("error").innerHTML="请检查电话是否正确！";
+                return false;
+            }
+        }else if(email!=="" && email!=null){
+            var re = /^([\w\.\-]+)\@(\w+)(\.([\w^\_]+)){1,2}$/;
+            const regEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+            if(!re.test(email))	{
+                document.getElementById("error").innerHTML="请检查邮箱是否正确！";
+                return false;
+            }
+        }
 		return true;
 	}
-	function myIsNaN(value) {
-		return typeof value === 'number' && !isNaN(value);
-	}
-
-	function isChinese(str){
-		var badChar ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		badChar += "abcdefghijklmnopqrstuvwxyz";
-		badChar += "0123456789";
-		badChar += " "+"　";//半角与全角空格
-		badChar += "`~!@#$%^&()-_=+]\\|:;\"\\'<,>?/";//不包含*或.的英文符号
-		if(str === ""){
-			return false;
-		}
-		for(var i=0;i<str.length;i++){
-			var c = str.charAt(i);//字符串str中的字符
-			if(badChar.indexOf(c) > -1){
-				return false;
-			}
-		}
-		return true;
-	}
-	/*
-    数字判断函数，返回true表示是全部数字，返回false表示不全部是数字
-    */
-	function isNumber(str){
-		if(str === ""){
-			return false;
-		}
-		var reg = /\D/;
-		return str.match(reg)==null;
-	}
-
+	
 	$(document).ready(function(){
 		$("ul li:eq(5)").addClass("active");
 	});
@@ -128,7 +95,7 @@
 							<td><input type="text" id="wechat"  name="wechat" value="${user.wechat }"  style="margin-top:5px;height:30px;" /></td>
 						</tr>
 						<tr>
-							<td><font color="red"></font>客户介绍：</td>
+							<td><font color="red"></font>介绍：</td>
 							<td><input type="text" id="introduction"  name="introduction" value="${user.introduction }"  style="margin-top:5px;height:80px;" /></td>
 						</tr>
 

@@ -1,6 +1,7 @@
 package cn.servlet;
 
 import cn.application.FreelancerService;
+import cn.domain.model.Client;
 import cn.domain.model.Freelancer;
 import cn.infrastructure.util.StringUtil;
 import cn.infrastructure.util.WebUtils;
@@ -55,6 +56,7 @@ public class FreelancerServlet extends HttpServlet {
             if(freelancerService.saveFreelancer(freelancer)){
                 request.getRequestDispatcher("freelancer?action=list").forward(request, response);
             }else{
+                response.setContentType("application/json;charset=utf-8");
                 request.setAttribute("error", "id is repeated");
                 request.setAttribute("user", freelancer);
                 request.setAttribute("mainPage", "page/admin/freelancerSave.jsp");
@@ -70,7 +72,11 @@ public class FreelancerServlet extends HttpServlet {
                 freelancers.add(freelancerService.queryFreelancerById(Integer.parseInt(searchText)));
             } else if("type".equals(searchType)) {
                 freelancers = freelancerService.queryFreelancerByType(searchText);
+            } else if("introduction".equals(searchType)) {
+                freelancers = freelancerService.queryFreelancerByIntroduction(searchText);
             }
+            request.setAttribute("searchText", searchText);
+            request.setAttribute("searchType", searchType);
             //2 把全部自由职业者保存到Request域中
             request.setAttribute("userList", freelancers);
             //3、请求转发到freelancer.jsp页面
